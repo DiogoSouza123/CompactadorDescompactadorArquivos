@@ -30,6 +30,7 @@ public class Main {
         lista.insereInicio("Dear");
         System.out.println(lista);
         */
+        
     }
     
 }

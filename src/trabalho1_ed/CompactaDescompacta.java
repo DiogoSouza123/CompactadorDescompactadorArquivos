@@ -47,6 +47,7 @@ public class CompactaDescompacta {
 
             // feche o arquivo
             bufferedReader.close();
+            bufferedWriter.write("0");
             bufferedWriter.close();
 
         } catch (FileNotFoundException ex) {
@@ -66,13 +67,29 @@ public class CompactaDescompacta {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             FileWriter fileWriter = new FileWriter(arquivoDescompactado);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            
-            
-            
-            
-            
+
+            while (!(linha = bufferedReader.readLine()).equals("0")) {
+                String[] palavra = linha.split(" ");
+                for (int i = 0; i < palavra.length; i++) {
+                    if (!digito(palavra[i])) {
+                        int verificador = lista.buscarElemento(palavra[i]);
+                        if (verificador == 0) {
+                            lista.insereInicio(palavra[i]);
+                            bufferedWriter.write(palavra[i] + " ");
+                        }
+                    } else {
+                        String temp = lista.buscarPalavra(Integer.parseInt(palavra[i]));
+                        bufferedWriter.write(temp + " ");
+                        lista.excluirParaMover(Integer.parseInt(palavra[i]));
+                        lista.insereInicio(temp);
+                    }
+                }
+                bufferedWriter.newLine();
+            }
+
             // feche o arquivo
             bufferedReader.close();
+            bufferedWriter.write("0");
             bufferedWriter.close();
 
         } catch (FileNotFoundException ex) {
@@ -81,5 +98,10 @@ public class CompactaDescompacta {
             System.out.println("Erro lendo o arquivo!");
         }
 
+    }
+
+    //metodo para verificar se a String passada é um número
+    public static boolean digito(String palavra) {
+        return palavra.matches("[0-9]*");
     }
 }

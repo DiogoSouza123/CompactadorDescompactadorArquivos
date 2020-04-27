@@ -60,6 +60,20 @@ public class ListaEncadeada {
         anterior.setProx(temp.getProx());
         
     }
+    
+    public String buscarPalavra(int indice){
+        String palavra = "";
+        No temp = ini;
+        int contador = 1;
+        
+        while (contador < indice) {
+            temp = temp.getProx();
+            contador++;
+        }
+        
+        palavra = (String)temp.getElemento();
+        return palavra;
+    }
 
     @Override
     public String toString() {
