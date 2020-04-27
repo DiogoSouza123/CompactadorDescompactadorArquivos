@@ -16,6 +16,7 @@ public class Main {
      */
     public static void main(String[] args) {
         CompactaDescompacta.compartar("ArquivoEntrada.txt", "ArquivoSaida.txt");
+        CompactaDescompacta.descompactar("ArquivoSaida.txt", "ArquivoDescompactado.txt");
         /*ListaEncadeada lista = new ListaEncadeada();
         lista.insereInicio("Dear");
         lista.insereInicio("Sally,");
